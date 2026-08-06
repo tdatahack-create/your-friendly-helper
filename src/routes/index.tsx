@@ -114,7 +114,7 @@ function FetchedFile({ source }: { source: FileDefinition }) {
   if (state.error) return <FetchError source={source} message={state.error} />;
   if (state.text === undefined) return <LoadingPanel />;
   if (source.type === "markdown") return <MarkdownContent text={state.text} />;
-  const highlighted = hljs.highlight(state.text, { language: source.type }).value;
+  const highlighted = hljs.highlight(stripDashes(state.text), { language: source.type }).value;
   return <pre className="code-content" tabIndex={0} aria-label={`${source.name} source code`}><code className={`hljs language-${source.type}`} dangerouslySetInnerHTML={{ __html: highlighted }} /></pre>;
 }
 
@@ -125,9 +125,17 @@ function FetchedMarkdown({ source }: { source: FileDefinition }) {
   return <div className="article-panel"><MarkdownContent text={state.text} /></div>;
 }
 
+function stripDashes(input: string) {
+  return input
+    .replace(/(\d)\s*[—–]\s*(\d)/g, "$1 to $2")
+    .replace(/\s*[—–]\s*/g, ", ")
+    .replace(/,\s*,/g, ",")
+    .replace(/,\s*([.;:!?])/g, "$1");
+}
+
 function MarkdownContent({ text }: { text: string }) {
   const [html, setHtml] = useState("");
-  useEffect(() => { let current = true; Promise.resolve(marked.parse(text)).then((parsed) => { const semanticHtml = parsed.replaceAll("<h1", "<h2 class=\"document-title\"").replaceAll("</h1>", "</h2>"); if (current) setHtml(DOMPurify.sanitize(semanticHtml)); }); return () => { current = false; }; }, [text]);
+  useEffect(() => { let current = true; Promise.resolve(marked.parse(stripDashes(text))).then((parsed) => { const semanticHtml = parsed.replaceAll("<h1", "<h2 class=\"document-title\"").replaceAll("</h1>", "</h2>"); if (current) setHtml(DOMPurify.sanitize(semanticHtml)); }); return () => { current = false; }; }, [text]);
   return <article className="markdown-content" dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
