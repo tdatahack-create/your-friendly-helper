@@ -114,7 +114,7 @@ function FetchedFile({ source }: { source: FileDefinition }) {
   if (state.error) return <FetchError source={source} message={state.error} />;
   if (state.text === undefined) return <LoadingPanel />;
   if (source.type === "markdown") return <MarkdownContent text={state.text} />;
-  const highlighted = hljs.highlight(state.text, { language: source.type }).value;
+  const highlighted = hljs.highlight(stripDashes(state.text), { language: source.type }).value;
   return <pre className="code-content" tabIndex={0} aria-label={`${source.name} source code`}><code className={`hljs language-${source.type}`} dangerouslySetInnerHTML={{ __html: highlighted }} /></pre>;
 }
 
