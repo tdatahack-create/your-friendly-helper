@@ -77,7 +77,7 @@ function Index() {
     <main id="main-content">
       <header id="top" className="hero-section">
         <div className="hero-kicker">Redbelly DAO Task Board · Submitted Research Deliverable</div>
-        <div className="hero-grid"><div><p className="case-number">CASE FILE / TASK-11</p><h1>RBNT Token Utility and Ecosystem Visibility Report</h1><p className="hero-summary">4 deliverables, every figure traced to a primary source — official whitepaper, live on-chain data, or the platform&apos;s own docs.</p></div><VerifiedStamp /></div>
+        <div className="hero-grid"><div><p className="case-number">CASE FILE / TASK-11</p><h1>RBNT Token Utility and Ecosystem Visibility Report</h1><p className="hero-summary">4 deliverables, every figure traced to a primary source, whether the official whitepaper, live on-chain data, or the platform&apos;s own docs.</p></div><VerifiedStamp /></div>
         <dl className="hero-register"><div><dt>Status</dt><dd>Completed</dd></div><div><dt>Deliverables</dt><dd className="key-number">04</dd></div><div><dt>Evidence standard</dt><dd>Primary sources</dd></div><div><dt>Review format</dt><dd>Inline dossier</dd></div></dl>
       </header>
       <DossierSection id="tokenomics" number="01" label="RBNT Tokenomics Report" intro="14-page tokenomics report, every figure cited from Redbelly's official whitepaper (August 2025) — total fixed supply (10B RBNT), the 5 real token uses (gas, governance, staking, sharding, incentives), full allocation table, and the token release schedule. Includes a 4-way competitor comparison (Ondo, Polymesh, XDC). No speculative price predictions — flagged explicitly where the whitepaper itself doesn't provide a pricing model.">
