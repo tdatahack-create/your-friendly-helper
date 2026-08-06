@@ -44,14 +44,18 @@ const RWA_FILES: FileDefinition[] = [
 ];
 const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
 
+const BRAND_MARK = "https://raw.githubusercontent.com/0xDarkSeidBull/hello-friend/main/public/task11logo.png";
+
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "TASK-11 — RBNT Utility & Ecosystem Report" },
+    { title: "TASK-11 RBNT Utility & Ecosystem Report" },
     { name: "description", content: "A source-verified Redbelly DAO research dossier covering RBNT tokenomics, DeFiLlama, RWA.xyz, and a plain-language explainer." },
-    { property: "og:title", content: "TASK-11 — RBNT Utility & Ecosystem Report" },
+    { property: "og:title", content: "TASK-11 RBNT Utility & Ecosystem Report" },
     { property: "og:description", content: "Four completed deliverables, with every figure traced to a primary source." },
     { property: "og:type", content: "website" },
+    { property: "og:image", content: BRAND_MARK },
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: BRAND_MARK },
   ] }),
   component: Index,
 });
