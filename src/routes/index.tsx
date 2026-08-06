@@ -8,6 +8,7 @@ import { Download, ExternalLink } from "lucide-react";
 import { marked } from "marked";
 import { useEffect, useState, type ReactNode } from "react";
 
+import brandMark from "@/assets/task11logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -44,7 +45,7 @@ const RWA_FILES: FileDefinition[] = [
 ];
 const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
 
-const BRAND_MARK = "https://raw.githubusercontent.com/0xDarkSeidBull/hello-friend/main/public/task11logo.png";
+const BRAND_MARK = brandMark.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -53,9 +54,7 @@ export const Route = createFileRoute("/")({
     { property: "og:title", content: "TASK-11 RBNT Utility & Ecosystem Report" },
     { property: "og:description", content: "Four completed deliverables, with every figure traced to a primary source." },
     { property: "og:type", content: "website" },
-    { property: "og:image", content: BRAND_MARK },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: BRAND_MARK },
   ] }),
   component: Index,
 });
