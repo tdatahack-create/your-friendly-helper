@@ -8,6 +8,7 @@ import { Download, ExternalLink } from "lucide-react";
 import { marked } from "marked";
 import { useEffect, useState, type ReactNode } from "react";
 
+import brandMark from "@/assets/task11logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
