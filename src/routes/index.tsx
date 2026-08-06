@@ -4,7 +4,7 @@ import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import json from "highlight.js/lib/languages/json";
 import python from "highlight.js/lib/languages/python";
-import { Download, ExternalLink, FileCheck2 } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 import { marked } from "marked";
 import { useEffect, useState, type ReactNode } from "react";
 
@@ -44,14 +44,18 @@ const RWA_FILES: FileDefinition[] = [
 ];
 const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
 
+const BRAND_MARK = "https://raw.githubusercontent.com/0xDarkSeidBull/hello-friend/main/public/task11logo.png";
+
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "TASK-11 — RBNT Utility & Ecosystem Report" },
+    { title: "TASK-11 RBNT Utility & Ecosystem Report" },
     { name: "description", content: "A source-verified Redbelly DAO research dossier covering RBNT tokenomics, DeFiLlama, RWA.xyz, and a plain-language explainer." },
-    { property: "og:title", content: "TASK-11 — RBNT Utility & Ecosystem Report" },
+    { property: "og:title", content: "TASK-11 RBNT Utility & Ecosystem Report" },
     { property: "og:description", content: "Four completed deliverables, with every figure traced to a primary source." },
     { property: "og:type", content: "website" },
+    { property: "og:image", content: BRAND_MARK },
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: BRAND_MARK },
   ] }),
   component: Index,
 });
@@ -64,7 +68,7 @@ function Index() {
   return <div className="dossier-shell">
     <a href="#main-content" className="skip-link">Skip to dossier</a>
     <nav className="top-nav" aria-label="Dossier sections">
-      <a href="#top" className="nav-identity"><FileCheck2 aria-hidden="true" /><span>TASK-11</span></a>
+      <a href="#top" className="nav-identity"><img src={BRAND_MARK} alt="TASK-11 brand mark" className="nav-logo" width={28} height={28} /><span>TASK-11</span></a>
       <div className="nav-links">
         <a href="#tokenomics"><span>01</span> Tokenomics</a><a href="#defillama"><span>02</span> DeFiLlama</a>
         <a href="#rwa"><span>03</span> RWA.xyz</a><a href="#explainer"><span>04</span> Explainer</a>
@@ -73,18 +77,19 @@ function Index() {
     <main id="main-content">
       <header id="top" className="hero-section">
         <div className="hero-kicker">Redbelly DAO Task Board · Submitted Research Deliverable</div>
-        <div className="hero-grid"><div><p className="case-number">CASE FILE / TASK-11</p><h1>RBNT Token Utility and Ecosystem Visibility Report</h1><p className="hero-summary">4 deliverables, every figure traced to a primary source — official whitepaper, live on-chain data, or the platform&apos;s own docs.</p></div><VerifiedStamp /></div>
+        <div className="hero-grid"><div><p className="case-number">CASE FILE / TASK-11</p><h1>RBNT Token Utility and Ecosystem Visibility Report</h1><p className="hero-summary">4 deliverables, every figure traced to a primary source, whether the official whitepaper, live on-chain data, or the platform&apos;s own docs.</p></div><VerifiedStamp /></div>
         <dl className="hero-register"><div><dt>Status</dt><dd>Completed</dd></div><div><dt>Deliverables</dt><dd className="key-number">04</dd></div><div><dt>Evidence standard</dt><dd>Primary sources</dd></div><div><dt>Review format</dt><dd>Inline dossier</dd></div></dl>
       </header>
-      <DossierSection id="tokenomics" number="01" label="RBNT Tokenomics Report" intro="14-page tokenomics report, every figure cited from Redbelly's official whitepaper (August 2025) — total fixed supply (10B RBNT), the 5 real token uses (gas, governance, staking, sharding, incentives), full allocation table, and the token release schedule. Includes a 4-way competitor comparison (Ondo, Polymesh, XDC). No speculative price predictions — flagged explicitly where the whitepaper itself doesn't provide a pricing model.">
+      <DossierSection id="tokenomics" number="01" label="RBNT Tokenomics Report" intro="14-page tokenomics report, every figure cited from Redbelly's official whitepaper (August 2025). It covers total fixed supply (10B RBNT), the 5 real token uses (gas, governance, staking, sharding, incentives), the full allocation table, and the token release schedule. Includes a 4-way competitor comparison (Ondo, Polymesh, XDC). No speculative price predictions, and it is flagged explicitly where the whitepaper itself doesn't provide a pricing model.">
         <div className="pdf-frame"><iframe title="RBNT Token Utility Report PDF" src={PDF_URL} loading="lazy" /></div>
         <div className="document-actions"><Button asChild className="dossier-button"><a href={PDF_URL} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" /> Open PDF in new tab</a></Button><Button asChild variant="outline" className="dossier-button dossier-button-outline"><a href={DOCX_URL} download><Download aria-hidden="true" /> Download DOCX (editable)</a></Button></div>
       </DossierSection>
-      <DossierSection id="defillama" number="02" label="DeFiLlama Submission Kit" intro="A TVL adapter for reddex (Redbelly's native DEX), built against the public @defillama/sdk. Live-verified on real infrastructure: a manual on-chain calculation ($21,778) was checked against DeFiLlama's own live figure ($22,002) — a 1.02% difference, well inside the 5% accuracy requirement. A domain bug (api.llama.fi vs coins.llama.fi) was found and fixed during verification — flagged transparently in the docs below rather than hidden." aside={<div className="evidence-note"><span className="key-number">1.02%</span><span>observed variance<br />against live figure</span></div>}><FileBrowser files={DEFI_FILES} stampFile="TESTING.md" /></DossierSection>
-      <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs) — unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App → Slack → kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for." aside={<VerifiedStamp compact />}><FileBrowser files={RWA_FILES} /></DossierSection>
-      <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 419-word plain-language explainer of what RBNT actually does, written for Discord/social — same sourcing discipline as the full report, condensed."><FetchedMarkdown source={ARTICLE} /></DossierSection>
+      <DossierSection id="defillama" number="02" label="DeFiLlama Submission Kit" intro="A TVL adapter for reddex (Redbelly's native DEX), built against the public @defillama/sdk. Live-verified on real infrastructure: a manual on-chain calculation ($21,778) was checked against DeFiLlama's own live figure ($22,002), a 1.02% difference, well inside the 5% accuracy requirement. A domain bug (api.llama.fi vs coins.llama.fi) was found and fixed during verification, then flagged transparently in the docs below rather than hidden." aside={<div className="evidence-note"><span className="key-number">1.02%</span><span>observed variance<br />against live figure</span></div>}><FileBrowser files={DEFI_FILES} stampFile="TESTING.md" /></DossierSection>
+      <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs). That is unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App to Slack to kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for." aside={<VerifiedStamp compact />}><FileBrowser files={RWA_FILES} /></DossierSection>
+      <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 419-word plain-language explainer of what RBNT actually does, written for Discord and social, with the same sourcing discipline as the full report, condensed."><FetchedMarkdown source={ARTICLE} /></DossierSection>
     </main>
-    <footer><span>TASK-11 / RBNT UTILITY & ECOSYSTEM VISIBILITY</span><span>Research deliverable · Redbelly DAO</span></footer>
+    <footer><span>TASK-11 / RBNT UTILITY &amp; ECOSYSTEM VISIBILITY</span><span>Research deliverable · Redbelly DAO</span></footer>
+    <div className="footer-credit">Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></div>
   </div>;
 }
 
