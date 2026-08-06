@@ -45,7 +45,7 @@ const RWA_FILES: FileDefinition[] = [
 ];
 const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
 
-const BRAND_MARK = "https://raw.githubusercontent.com/0xDarkSeidBull/hello-friend/main/public/task11logo.png";
+const BRAND_MARK = brandMark.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
