@@ -123,7 +123,7 @@ function FetchedMarkdown({ source }: { source: FileDefinition }) {
 
 function MarkdownContent({ text }: { text: string }) {
   const [html, setHtml] = useState("");
-  useEffect(() => { let current = true; Promise.resolve(marked.parse(text)).then((parsed) => { if (current) setHtml(DOMPurify.sanitize(parsed)); }); return () => { current = false; }; }, [text]);
+  useEffect(() => { let current = true; Promise.resolve(marked.parse(text)).then((parsed) => { const semanticHtml = parsed.replaceAll("<h1", "<h2 class=\"document-title\"").replaceAll("</h1>", "</h2>"); if (current) setHtml(DOMPurify.sanitize(semanticHtml)); }); return () => { current = false; }; }, [text]);
   return <article className="markdown-content" dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
