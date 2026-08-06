@@ -4,7 +4,7 @@ import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import json from "highlight.js/lib/languages/json";
 import python from "highlight.js/lib/languages/python";
-import { Download, ExternalLink, FileCheck2 } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 import { marked } from "marked";
 import { useEffect, useState, type ReactNode } from "react";
 
