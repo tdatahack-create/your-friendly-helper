@@ -195,7 +195,7 @@ h2 { margin: .7rem 0 1.2rem; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1
 .evidence-note .key-number { display: block; font-size: 2rem; }
 .evidence-note span:last-child { display: block; margin-top: .4rem; font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; }
 .pdf-frame { margin-top: 2.5rem; border: 1px solid var(--color-card-foreground); background: var(--color-background); padding: .55rem; }
-.pdf-frame iframe { display: block; width: 100%; height: min(78vh, 850px); min-height: 560px; border: 0; background: var(--color-card); }
+.pdf-frame iframe { display: block; width: 100%; height: min(78vh, 850px); min-height: 700px; border: 0; background: var(--color-card); }
 .document-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
 .dossier-button { min-height: 2.75rem; border-radius: .15rem; background: var(--color-card-foreground); color: var(--color-card); box-shadow: none; }
 .dossier-button:hover { background: color-mix(in oklab, var(--color-card-foreground) 88%, transparent); }
@@ -259,7 +259,7 @@ footer { display: flex; justify-content: space-between; gap: 1rem; border-top: 1
   .folder-tab { max-width: 100%; font-size: .65rem; }
   .section-heading { grid-template-columns: 1fr; gap: 1.5rem; }
   .section-aside { justify-content: flex-start; }
-  .pdf-frame iframe { min-height: 470px; }
+  .pdf-frame iframe { min-height: 700px; }
   .document-actions { flex-direction: column; }
   .document-actions .dossier-button { width: 100%; }
   .code-content { font-size: .72rem; }
