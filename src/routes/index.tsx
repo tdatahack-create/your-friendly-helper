@@ -88,8 +88,10 @@ function Index() {
       <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs). That is unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App to Slack to kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for." aside={<VerifiedStamp compact />}><FileBrowser files={RWA_FILES} /></DossierSection>
       <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 419-word plain-language explainer of what RBNT actually does, written for Discord and social, with the same sourcing discipline as the full report, condensed."><FetchedMarkdown source={ARTICLE} /></DossierSection>
     </main>
-    <footer><span>RBNT UTILITY &amp; ECOSYSTEM VISIBILITY</span><span>Research deliverable · Redbelly DAO</span></footer>
-    <div className="footer-credit">Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></div>
+    <div className="footer-wrap">
+      <footer><span>RBNT UTILITY &amp; ECOSYSTEM VISIBILITY</span><span>Research deliverable · Redbelly DAO</span></footer>
+      <div className="footer-credit">Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></div>
+    </div>
   </div>;
 }
 
