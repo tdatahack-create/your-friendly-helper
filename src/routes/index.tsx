@@ -18,9 +18,9 @@ hljs.registerLanguage("json", json);
 hljs.registerLanguage("python", python);
 marked.setOptions({ gfm: true, breaks: false });
 
-const PDF_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report.pdf";
+const PDF_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.pdf";
 const PDF_VIEWER_URL = `https://docs.google.com/viewer?url=${encodeURIComponent(PDF_URL)}&embedded=true`;
-const DOCX_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report.docx";
+const DOCX_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.docx";
 
 type FileDefinition = { name: string; url: string; type: "markdown" | "javascript" | "python" | "json" };
 function file(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
