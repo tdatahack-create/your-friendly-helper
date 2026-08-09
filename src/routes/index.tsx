@@ -47,7 +47,7 @@ const RWA_FILES: FileDefinition[] = [
 ];
 const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
 
-const BRAND_MARK = "/task11logo.png";
+const BRAND_MARK = "/dao-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -69,7 +69,7 @@ function Index() {
   return <div className="dossier-shell">
     <a href="#main-content" className="skip-link">Skip to dossier</a>
     <nav className="top-nav" aria-label="Dossier sections">
-      <a href="#top" className="nav-identity"><img src={BRAND_MARK} alt="Dossier brand mark" className="nav-logo" width={84} height={84} /></a>
+      <a href="#top" className="nav-identity"><img src={BRAND_MARK} alt="DAO Task Board logo" className="nav-logo" height={44} /></a>
       <div className="nav-links">
         <a href="#tokenomics"><span>01</span> Tokenomics</a><a href="#defillama"><span>02</span> DeFiLlama</a>
         <a href="#rwa"><span>03</span> RWA.xyz</a><a href="#explainer"><span>04</span> Explainer</a>
