@@ -18,10 +18,12 @@ hljs.registerLanguage("json", json);
 hljs.registerLanguage("python", python);
 marked.setOptions({ gfm: true, breaks: false });
 
-const PDF_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.pdf";
-const PDF_VIEWER_URL = `https://docs.google.com/viewer?url=${encodeURIComponent(PDF_URL)}&embedded=true`;
-const PDF_READ_URL = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/dao-redbelly@main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.pdf";
-const DOCX_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.docx";
+const DOCX_RAW_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/RBNT_Token_Utility_Report_1.docx";
+const READ_DOCS_URL = `https://docs.google.com/viewer?url=${DOCX_RAW_URL}&embedded=true`;
+const READ_PDF_URL = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/daotask11@main/RBNT_Token_Utility_Report_1.pdf";
+const GITHUB_URL = "https://github.com/0xDarkSeidBull/daotask11/blob/main/RBNT_Token_Utility_Report_1.pdf";
+const DEVTO_URL = "https://dev.to/0xdarkseidbull/verifying-before-shipping-a-rbnt-token-case-study-3bc1";
+const PDF_VIEWER_URL = `https://docs.google.com/viewer?url=${encodeURIComponent("https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/RBNT_Token_Utility_Report_1.pdf")}&embedded=true`;
 
 type FileDefinition = { name: string; url: string; type: "markdown" | "javascript" | "python" | "json" };
 function file(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
@@ -45,7 +47,7 @@ const RWA_FILES: FileDefinition[] = [
   file("PLATFORMS-TO-INTRODUCE.md", "part3-rwa-xyz-kit/PLATFORMS-TO-INTRODUCE.md", "markdown"),
   file("POC-TEMPLATE.md", "part3-rwa-xyz-kit/POC-TEMPLATE.md", "markdown"),
 ];
-const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
+const ARTICLE: FileDefinition = { name: "RBNT-Explainer.md", type: "markdown", url: "https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/part4-explainer/RBNT-Explainer.md" };
 
 const BRAND_MARK = "/dao-logo.png";
 
@@ -83,15 +85,27 @@ function Index() {
       </header>
       <DossierSection id="tokenomics" number="01" label="RBNT Tokenomics Report" intro="14-page tokenomics report, every figure cited from Redbelly's official whitepaper (August 2025). It covers total fixed supply (10B RBNT), the 5 real token uses (gas, governance, staking, sharding, incentives), the full allocation table, and the token release schedule. Includes a 4-way competitor comparison (Ondo, Polymesh, XDC). No speculative price predictions, and it is flagged explicitly where the whitepaper itself doesn't provide a pricing model.">
         <div className="pdf-frame"><iframe title="RBNT Token Utility Report PDF" src={PDF_VIEWER_URL} loading="lazy" /></div>
-        <div className="document-actions"><Button asChild className="dossier-button"><a href={PDF_READ_URL} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" /> Read PDF</a></Button><Button asChild variant="outline" className="dossier-button dossier-button-outline"><a href={DOCX_URL} download><Download aria-hidden="true" /> Download DOCX (editable)</a></Button></div>
+        <div className="document-actions"><Button asChild className="dossier-button"><a href={READ_PDF_URL} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Read PDF</a></Button><Button asChild variant="outline" className="dossier-button dossier-button-outline"><a href={READ_DOCS_URL} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Read Docs</a></Button></div>
+        <p className="secondary-download"><a href={DOCX_RAW_URL} download><Download aria-hidden="true" /> Download DOCX</a></p>
       </DossierSection>
       <DossierSection id="defillama" number="02" label="DeFiLlama Submission Kit" intro="A TVL adapter for reddex (Redbelly's native DEX), built against the public @defillama/sdk. Live-verified on real infrastructure: a manual on-chain calculation ($21,778) was checked against DeFiLlama's own live figure ($22,002), a 1.02% difference, well inside the 5% accuracy requirement. A domain bug (api.llama.fi vs coins.llama.fi) was found and fixed during verification, then flagged transparently in the docs below rather than hidden." aside={<div className="evidence-note"><span className="key-number">1.02%</span><span>observed variance<br />against live figure</span></div>}><FileBrowser files={DEFI_FILES} stampFile="TESTING.md" /></DossierSection>
       <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs). That is unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App to Slack to kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for." aside={<VerifiedStamp compact />}><FileBrowser files={RWA_FILES} /></DossierSection>
-      <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 419-word plain-language explainer of what RBNT actually does, written for Discord and social, with the same sourcing discipline as the full report, condensed."><FetchedMarkdown source={ARTICLE} /></DossierSection>
+      <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 450-word plain-language explainer titled &quot;How Network Adoption Drives RBNT Value&quot;, written for Discord and social, showing how gas, staking, sharding, and governance tie RBNT demand to network adoption, with the same sourcing discipline as the full report, condensed.">
+        <div className="document-actions"><Button asChild className="dossier-button"><a href={DEVTO_URL} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Read Article</a></Button></div>
+        <FetchedMarkdown source={ARTICLE} />
+      </DossierSection>
     </main>
     <div className="footer-wrap">
       <footer><span>RBNT UTILITY &amp; ECOSYSTEM VISIBILITY</span><span>Research deliverable · Redbelly DAO</span></footer>
-      <div className="footer-credit">Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></div>
+      <div className="footer-credit">
+        <span>Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></span>
+        <span className="footer-icons">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="View the report on GitHub"><GithubIcon /></a>
+          <a href={READ_DOCS_URL} target="_blank" rel="noopener noreferrer" aria-label="Read the report as a document"><DocsIcon /></a>
+          <a href={READ_PDF_URL} target="_blank" rel="noopener noreferrer" aria-label="Read the report PDF"><PdfIcon /></a>
+          <a href={DEVTO_URL} target="_blank" rel="noopener noreferrer" aria-label="Read the article on Dev.to"><DevtoIcon /></a>
+        </span>
+      </div>
     </div>
   </div>;
 }
@@ -145,3 +159,9 @@ function MarkdownContent({ text }: { text: string }) {
 
 function LoadingPanel() { return <div className="loading-panel" aria-label="Loading file content"><Skeleton className="h-4 w-2/5" /><Skeleton className="h-4 w-full" /><Skeleton className="h-4 w-11/12" /><Skeleton className="h-24 w-full" /><Skeleton className="h-4 w-3/4" /></div>; }
 function FetchError({ source, message }: { source: FileDefinition; message: string }) { return <div className="fetch-error" role="alert"><strong>This evidence file could not be loaded.</strong><span>{message}</span><a href={source.url} target="_blank" rel="noreferrer">Open raw file <ExternalLink aria-hidden="true" /></a></div>; }
+
+const svgProps = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+function GithubIcon() { return <svg {...svgProps}><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.8A5.3 5.3 0 0 0 19.9 5a4.9 4.9 0 0 0-.1-3.7s-1.1-.3-3.8 1.4a13 13 0 0 0-7 0C6.3 1 5.2 1.3 5.2 1.3A4.9 4.9 0 0 0 5.1 5a5.3 5.3 0 0 0-1.4 3.7c0 5.3 3.2 6.5 6.2 6.8a3.4 3.4 0 0 0-.9 2.6V22" /></svg>; }
+function DocsIcon() { return <svg {...svgProps}><path d="M14 2H6.5A1.5 1.5 0 0 0 5 3.5v17A1.5 1.5 0 0 0 6.5 22h11a1.5 1.5 0 0 0 1.5-1.5V7z" /><path d="M14 2v5h5" /><path d="M8.5 12.5h7M8.5 16.5h7" /></svg>; }
+function PdfIcon() { return <svg {...svgProps}><path d="M14 2H6.5A1.5 1.5 0 0 0 5 3.5v17A1.5 1.5 0 0 0 6.5 22h11a1.5 1.5 0 0 0 1.5-1.5V7z" /><path d="M14 2v5h5" /><path d="M8.2 18v-4h1.2a1.1 1.1 0 0 1 0 2.2H8.2M12.4 18v-4h.9a1.2 1.2 0 0 1 1.2 1.2v1.6a1.2 1.2 0 0 1-1.2 1.2zM18.2 14h-1.6v4M16.6 16h1.3" /></svg>; }
+function DevtoIcon() { return <svg {...svgProps}><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M6 9.5v5h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM12.6 9.5l1 5 1-5M17 14.5h1.8M17 12h1.6M17 14.5v-5h1.8" /></svg>; }
