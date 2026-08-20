@@ -29,6 +29,9 @@ type FileDefinition = { name: string; url: string; type: "markdown" | "javascrip
 function file(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
   return { name, type, url: `https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/${path}` };
 }
+function rwaFile(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
+  return { name, type, url: `https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/part3-rwa-xyz-kit/${path}` };
+}
 
 const DEFI_FILES: FileDefinition[] = [
   file("index.js", "part2-defillama-kit/index.js", "javascript"),
@@ -41,11 +44,12 @@ const DEFI_FILES: FileDefinition[] = [
   file("API-ENDPOINTS.md", "part2-defillama-kit/API-ENDPOINTS.md", "markdown"),
 ];
 const RWA_FILES: FileDefinition[] = [
-  file("README.md", "part3-rwa-xyz-kit/README.md", "markdown"),
-  file("ONBOARDING-CHECKLIST.md", "part3-rwa-xyz-kit/ONBOARDING-CHECKLIST.md", "markdown"),
-  file("NETWORK-PROFILE-DRAFT.md", "part3-rwa-xyz-kit/NETWORK-PROFILE-DRAFT.md", "markdown"),
-  file("PLATFORMS-TO-INTRODUCE.md", "part3-rwa-xyz-kit/PLATFORMS-TO-INTRODUCE.md", "markdown"),
-  file("POC-TEMPLATE.md", "part3-rwa-xyz-kit/POC-TEMPLATE.md", "markdown"),
+  rwaFile("README.md", "README.md", "markdown"),
+  rwaFile("ONBOARDING-CHECKLIST.md", "ONBOARDING-CHECKLIST.md", "markdown"),
+  rwaFile("NETWORK-PROFILE-DRAFT.md", "NETWORK-PROFILE-DRAFT.md", "markdown"),
+  rwaFile("PLATFORMS-TO-INTRODUCE.md", "PLATFORMS-TO-INTRODUCE.md", "markdown"),
+  rwaFile("POC-TEMPLATE.md", "POC-TEMPLATE.md", "markdown"),
+  rwaFile("ASSET-REGISTRY-DATA.md", "ASSET-REGISTRY-DATA.md", "markdown"),
 ];
 const ARTICLE: FileDefinition = { name: "RBNT-Explainer.md", type: "markdown", url: "https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/part4-explainer/RBNT-Explainer.md" };
 
@@ -89,7 +93,7 @@ function Index() {
         <p className="secondary-download"><a href={DOCX_RAW_URL} download><Download aria-hidden="true" /> Download DOCX</a></p>
       </DossierSection>
       <DossierSection id="defillama" number="02" label="DeFiLlama Submission Kit" intro="A TVL adapter for reddex (Redbelly's native DEX), built against the public @defillama/sdk. Live-verified on real infrastructure: a manual on-chain calculation ($21,778) was checked against DeFiLlama's own live figure ($22,002), a 1.02% difference, well inside the 5% accuracy requirement. A domain bug (api.llama.fi vs coins.llama.fi) was found and fixed during verification, then flagged transparently in the docs below rather than hidden." aside={<div className="evidence-note"><span className="key-number">1.02%</span><span>observed variance<br />against live figure</span></div>}><FileBrowser files={DEFI_FILES} stampFile="TESTING.md" /></DossierSection>
-      <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs). That is unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App to Slack to kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for." aside={<VerifiedStamp compact />}><FileBrowser files={RWA_FILES} /></DossierSection>
+      <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs). That is unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App to Slack to kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for, including a sample asset registry and the FAQ's own 4 to 8 week end-to-end timeline from submission to going live." aside={<div className="evidence-note"><span className="key-number">4 to 8 weeks</span><span>estimated end-to-end<br />timeline per RWA.xyz FAQ</span></div>}><FileBrowser files={RWA_FILES} /><p className="secondary-download"><a href="https://github.com/0xDarkSeidBull/daotask11/tree/main/part3-rwa-xyz-kit" target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> View full kit on GitHub</a></p></DossierSection>
       <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 450-word plain-language explainer titled &quot;How Network Adoption Drives RBNT Value&quot;, written for Discord and social, showing how gas, staking, sharding, and governance tie RBNT demand to network adoption, with the same sourcing discipline as the full report, condensed.">
         <div className="document-actions"><Button asChild className="dossier-button"><a href={DEVTO_URL} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Read Article</a></Button></div>
         <FetchedMarkdown source={ARTICLE} />
