@@ -90,11 +90,22 @@ function Index() {
       </DossierSection>
       <DossierSection id="defillama" number="02" label="DeFiLlama Submission Kit" intro="A TVL adapter for reddex (Redbelly's native DEX), built against the public @defillama/sdk. Live-verified on real infrastructure: a manual on-chain calculation ($21,778) was checked against DeFiLlama's own live figure ($22,002), a 1.02% difference, well inside the 5% accuracy requirement. A domain bug (api.llama.fi vs coins.llama.fi) was found and fixed during verification, then flagged transparently in the docs below rather than hidden." aside={<div className="evidence-note"><span className="key-number">1.02%</span><span>observed variance<br />against live figure</span></div>}><FileBrowser files={DEFI_FILES} stampFile="TESTING.md" /></DossierSection>
       <DossierSection id="rwa" number="03" label="RWA.xyz Submission Kit" intro="A verified finding: Redbelly is genuinely absent from RWA.xyz's directory and network-coverage list (checked directly against their published docs). That is unlike the DeFiLlama case, where the 'absent' claim turned out to be outdated. Since RWA.xyz onboarding is a manual partnership process (Partners App to Slack to kickoff call), not a self-service code submission, this kit pre-fills every field their process asks for." aside={<VerifiedStamp compact />}><FileBrowser files={RWA_FILES} /></DossierSection>
-      <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 419-word plain-language explainer of what RBNT actually does, written for Discord and social, with the same sourcing discipline as the full report, condensed."><FetchedMarkdown source={ARTICLE} /></DossierSection>
+      <DossierSection id="explainer" number="04" label="Explainer Article" intro="A 450-word plain-language explainer titled &quot;How Network Adoption Drives RBNT Value&quot;, written for Discord and social, showing how gas, staking, sharding, and governance tie RBNT demand to network adoption, with the same sourcing discipline as the full report, condensed.">
+        <div className="document-actions"><Button asChild className="dossier-button"><a href={DEVTO_URL} target="_blank" rel="noopener noreferrer"><ExternalLink aria-hidden="true" /> Read Article</a></Button></div>
+        <FetchedMarkdown source={ARTICLE} />
+      </DossierSection>
     </main>
     <div className="footer-wrap">
       <footer><span>RBNT UTILITY &amp; ECOSYSTEM VISIBILITY</span><span>Research deliverable · Redbelly DAO</span></footer>
-      <div className="footer-credit">Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></div>
+      <div className="footer-credit">
+        <span>Built with ♥ by <a href="https://github.com/0xDarkSeidBull" target="_blank" rel="noreferrer">0xDarkSeidBull</a></span>
+        <span className="footer-icons">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="View the report on GitHub"><GithubIcon /></a>
+          <a href={READ_DOCS_URL} target="_blank" rel="noopener noreferrer" aria-label="Read the report as a document"><DocsIcon /></a>
+          <a href={READ_PDF_URL} target="_blank" rel="noopener noreferrer" aria-label="Read the report PDF"><PdfIcon /></a>
+          <a href={DEVTO_URL} target="_blank" rel="noopener noreferrer" aria-label="Read the article on Dev.to"><DevtoIcon /></a>
+        </span>
+      </div>
     </div>
   </div>;
 }
