@@ -27,7 +27,7 @@ const PDF_VIEWER_URL = `https://docs.google.com/viewer?url=${encodeURIComponent(
 
 type FileDefinition = { name: string; url: string; type: "markdown" | "javascript" | "python" | "json" };
 function file(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
-  return { name, type, url: `https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/${path}` };
+  return { name, type, url: `https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/${path}` };
 }
 function rwaFile(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
   return { name, type, url: `https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/part3-rwa-xyz-kit/${path}` };
