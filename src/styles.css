@@ -237,3 +237,13 @@ footer { display: flex; justify-content: space-between; gap: 1rem; padding: 2rem
   html { scroll-behavior: auto; }
   * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.secondary-download { margin-top: .75rem; font-family: var(--font-sans); font-size: .85rem; }
+.secondary-download a { display: inline-flex; align-items: center; gap: .4rem; color: var(--body-secondary); text-decoration: none; }
+.secondary-download a svg { width: 14px; height: 14px; }
+.secondary-download a:hover, .secondary-download a:focus-visible { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.footer-credit { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.footer-icons { display: inline-flex; align-items: center; gap: .85rem; }
+.footer-icons a { display: inline-flex; color: #93a4ae; transition: color .15s ease; }
+.footer-icons a:hover, .footer-icons a:focus-visible { color: #EF5350; text-decoration: none; }
+:root[data-theme="light"] .footer-icons a:hover, :root[data-theme="light"] .footer-icons a:focus-visible, .light .footer-icons a:hover, .light .footer-icons a:focus-visible { color: #B3272A; }

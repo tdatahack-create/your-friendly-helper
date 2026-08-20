@@ -159,3 +159,9 @@ function MarkdownContent({ text }: { text: string }) {
 
 function LoadingPanel() { return <div className="loading-panel" aria-label="Loading file content"><Skeleton className="h-4 w-2/5" /><Skeleton className="h-4 w-full" /><Skeleton className="h-4 w-11/12" /><Skeleton className="h-24 w-full" /><Skeleton className="h-4 w-3/4" /></div>; }
 function FetchError({ source, message }: { source: FileDefinition; message: string }) { return <div className="fetch-error" role="alert"><strong>This evidence file could not be loaded.</strong><span>{message}</span><a href={source.url} target="_blank" rel="noreferrer">Open raw file <ExternalLink aria-hidden="true" /></a></div>; }
+
+const svgProps = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+function GithubIcon() { return <svg {...svgProps}><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.8A5.3 5.3 0 0 0 19.9 5a4.9 4.9 0 0 0-.1-3.7s-1.1-.3-3.8 1.4a13 13 0 0 0-7 0C6.3 1 5.2 1.3 5.2 1.3A4.9 4.9 0 0 0 5.1 5a5.3 5.3 0 0 0-1.4 3.7c0 5.3 3.2 6.5 6.2 6.8a3.4 3.4 0 0 0-.9 2.6V22" /></svg>; }
+function DocsIcon() { return <svg {...svgProps}><path d="M14 2H6.5A1.5 1.5 0 0 0 5 3.5v17A1.5 1.5 0 0 0 6.5 22h11a1.5 1.5 0 0 0 1.5-1.5V7z" /><path d="M14 2v5h5" /><path d="M8.5 12.5h7M8.5 16.5h7" /></svg>; }
+function PdfIcon() { return <svg {...svgProps}><path d="M14 2H6.5A1.5 1.5 0 0 0 5 3.5v17A1.5 1.5 0 0 0 6.5 22h11a1.5 1.5 0 0 0 1.5-1.5V7z" /><path d="M14 2v5h5" /><path d="M8.2 18v-4h1.2a1.1 1.1 0 0 1 0 2.2H8.2M12.4 18v-4h.9a1.2 1.2 0 0 1 1.2 1.2v1.6a1.2 1.2 0 0 1-1.2 1.2zM18.2 14h-1.6v4M16.6 16h1.3" /></svg>; }
+function DevtoIcon() { return <svg {...svgProps}><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M6 9.5v5h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM12.6 9.5l1 5 1-5M17 14.5h1.8M17 12h1.6M17 14.5v-5h1.8" /></svg>; }
