@@ -47,7 +47,7 @@ const RWA_FILES: FileDefinition[] = [
   file("PLATFORMS-TO-INTRODUCE.md", "part3-rwa-xyz-kit/PLATFORMS-TO-INTRODUCE.md", "markdown"),
   file("POC-TEMPLATE.md", "part3-rwa-xyz-kit/POC-TEMPLATE.md", "markdown"),
 ];
-const ARTICLE = file("RBNT-Explainer.md", "part4-explainer/RBNT-Explainer.md", "markdown");
+const ARTICLE: FileDefinition = { name: "RBNT-Explainer.md", type: "markdown", url: "https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/part4-explainer/RBNT-Explainer.md" };
 
 const BRAND_MARK = "/dao-logo.png";
 
