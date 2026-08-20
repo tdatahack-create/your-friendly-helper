@@ -18,10 +18,12 @@ hljs.registerLanguage("json", json);
 hljs.registerLanguage("python", python);
 marked.setOptions({ gfm: true, breaks: false });
 
-const PDF_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.pdf";
-const PDF_VIEWER_URL = `https://docs.google.com/viewer?url=${encodeURIComponent(PDF_URL)}&embedded=true`;
-const PDF_READ_URL = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/dao-redbelly@main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.pdf";
-const DOCX_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/dao-redbelly/main/task11-rbnt-report/part1-tokenomics-report/RBNT_Token_Utility_Report_BrandKit.docx";
+const DOCX_RAW_URL = "https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/RBNT_Token_Utility_Report_1.docx";
+const READ_DOCS_URL = `https://docs.google.com/viewer?url=${DOCX_RAW_URL}&embedded=true`;
+const READ_PDF_URL = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/daotask11@main/RBNT_Token_Utility_Report_1.pdf";
+const GITHUB_URL = "https://github.com/0xDarkSeidBull/daotask11/blob/main/RBNT_Token_Utility_Report_1.pdf";
+const DEVTO_URL = "https://dev.to/0xdarkseidbull/verifying-before-shipping-a-rbnt-token-case-study-3bc1";
+const PDF_VIEWER_URL = `https://docs.google.com/viewer?url=${encodeURIComponent("https://raw.githubusercontent.com/0xDarkSeidBull/daotask11/main/RBNT_Token_Utility_Report_1.pdf")}&embedded=true`;
 
 type FileDefinition = { name: string; url: string; type: "markdown" | "javascript" | "python" | "json" };
 function file(name: string, path: string, type: FileDefinition["type"]): FileDefinition {
